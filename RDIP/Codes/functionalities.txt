@@ -1,0 +1,7 @@
+Functionalities:
+1. On selecting "English" or "Hindi" from the dropdown generate buttons with words of that language in jumbled order.
+2. On clicking a button it is removed from the group of jumbled buttons and added to the new sentence forming below and a "Re-form the sentence" button is added, clicking on which results in the initial jumbled arrangement of the buttons.
+3. After clicking every button from the jumbled buttons a "Check the correctness of this sentence" button appears clicking on which shows if the sentence formed is right or wrong.
+4. If the sentence formed is wrong a "Get Correct Sentence" button appears which when clicked shows all the possible sentences.
+5. After clicking the "Get Correct Sentence" button it is replaced with a "Hide the correct Sentence" button.
+6. On clicking the "Hide the Correct Sentence" button it is replaced with "Get Answers" button and 	on clicking "Get Answers" button it is replaced with "Hide the Correct Sentence" button and this keeps on repeating itself.
