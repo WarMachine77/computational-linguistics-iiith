@@ -21,6 +21,10 @@ $("#lang").on("change", function(){
 	document.getElementById("help1").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
 	document.getElementById("help2").innerHTML = "(select the buttons in proper order)";
 	document.getElementById("buttons").innerHTML = "";
+	document.getElementById("help3").innerHTML = "";
+	document.getElementById("help4").innerHTML = "";
+	document.getElementById("formed").innerHTML = "";
+	$("#reform").css("display", "none");
 	var lang = $("#lang").find(":selected").text();
 	if(lang === "---Select Language---") {
 		alert("Select language");
@@ -42,6 +46,17 @@ $("#lang").on("change", function(){
 			document.getElementById("buttons").appendChild(btn);
 			words.pop();
 		}
+		$("button").on("click", function(){
+			document.getElementById("help3").innerHTML = "Formed Sentence";
+			document.getElementById("help4").innerHTML = "(after selecting words):"
+			var word = $(this).text()+" ";
+			if($(this).text() !== "Re-form the sentence") {
+				var wordnode = document.createTextNode(word);
+				$(this).hide();
+				document.getElementById("formed").appendChild(wordnode);
+				$("#reform").css("display", "block");
+			}	
+		});
 		return true;
 	} else {
 		var hind = Math.floor(Math.random()*7);
