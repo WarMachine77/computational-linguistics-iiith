@@ -55,9 +55,17 @@ $("#lang").on("change", function(){
 				$(this).hide();
 				document.getElementById("formed").appendChild(wordnode);
 				$("#reform").css("display", "block");
-			}	
+			}
+			$("#reform").on("click", function(){
+				$("button").show();
+				document.getElementById("help3").innerHTML = "";
+				document.getElementById("help4").innerHTML = "";
+				document.getElementById("formed").innerHTML = "";
+				$("#reform").css("display", "none");
+				return true;
+			});
+			return true;	
 		});
-		return true;
 	} else {
 		var hind = Math.floor(Math.random()*7);
 		var allans = hindi[hind];
@@ -75,6 +83,25 @@ $("#lang").on("change", function(){
 			document.getElementById("buttons").appendChild(btn);
 			words.pop();
 		}
-		return true;
+		$("button").on("click", function(){
+			document.getElementById("help3").innerHTML = "Formed Sentence";
+			document.getElementById("help4").innerHTML = "(after selecting words):"
+			var word = $(this).text()+" ";
+			if($(this).text() !== "Re-form the sentence") {
+				var wordnode = document.createTextNode(word);
+				$(this).hide();
+				document.getElementById("formed").appendChild(wordnode);
+				$("#reform").css("display", "block");
+			}
+			$("#reform").on("click", function(){
+				$("button").show();
+				document.getElementById("help3").innerHTML = "";
+				document.getElementById("help4").innerHTML = "";
+				document.getElementById("formed").innerHTML = "";
+				$("#reform").css("display", "none");
+				return true;
+			});
+			return true
+		});
 	}
 });
