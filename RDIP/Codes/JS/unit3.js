@@ -67,6 +67,7 @@ $("#lang").on("change", function(){
 				document.getElementById("ans").innerHTML = "";
 				$("#reform").css("display", "none");
 				$("#check").css("display", "none");
+				$("#get").css("display", "none");
 				return true;
 			});
 			var form = $("#formed").text().split(" ");
@@ -75,8 +76,6 @@ $("#lang").on("change", function(){
 			}
 			$("#check").click(function(){
 				for(i=0; i<allans.length; i++) {
-					console.log($("#formed").text());
-					console.log(allans[i]);
 					if($("#formed").text() === allans[i]) {
 						document.getElementById("ans").innerHTML = "Right answer!!!";
 						$("#ans").css("color", "#008000");
@@ -85,6 +84,7 @@ $("#lang").on("change", function(){
 				}
 				document.getElementById("ans").innerHTML = "Wrong answer!!!";
 				$("#ans").css("color", "#FF0000");
+				$("#get").css("display", "block");
 				return false;
 			});
 			return true;	
@@ -125,6 +125,7 @@ $("#lang").on("change", function(){
 				document.getElementById("ans").innerHTML = "";
 				$("#reform").css("display", "none");
 				$("#check").css("display", "none");
+				$("#get").css("display", "none");
 				return true;
 			});
 			var form = $("#formed").text().split(" ");
@@ -141,6 +142,7 @@ $("#lang").on("change", function(){
 				}
 				document.getElementById("ans").innerHTML = "Wrong answer!!!";
 				$("#ans").css("color", "#FF0000");
+				$("#get").css("display", "block");
 				return false;
 			});
 			return true
