@@ -50,7 +50,7 @@ $("#lang").on("change", function(){
 			document.getElementById("help3").innerHTML = "Formed Sentence";
 			document.getElementById("help4").innerHTML = "(after selecting words):"
 			var word = $(this).text()+" ";
-			if($(this).text() !== "Re-form the sentence") {
+			if($(this).text() !== "Re-form the sentence" && $(this).text() !== "Check the correctness of this sentence") {
 				var wordnode = document.createTextNode(word);
 				$(this).hide();
 				document.getElementById("formed").appendChild(wordnode);
@@ -62,8 +62,13 @@ $("#lang").on("change", function(){
 				document.getElementById("help4").innerHTML = "";
 				document.getElementById("formed").innerHTML = "";
 				$("#reform").css("display", "none");
+				$("#check").css("display", "none");
 				return true;
 			});
+			var form = $("#formed").text().split(" ");
+			if(form.length-1 == wlen) {
+				$("#check").css("display", "block");
+			}
 			return true;	
 		});
 	} else {
@@ -87,7 +92,7 @@ $("#lang").on("change", function(){
 			document.getElementById("help3").innerHTML = "Formed Sentence";
 			document.getElementById("help4").innerHTML = "(after selecting words):"
 			var word = $(this).text()+" ";
-			if($(this).text() !== "Re-form the sentence") {
+			if($(this).text() !== "Re-form the sentence" && $(this).text() !== "Check the correctness of this sentence") {
 				var wordnode = document.createTextNode(word);
 				$(this).hide();
 				document.getElementById("formed").appendChild(wordnode);
@@ -99,8 +104,13 @@ $("#lang").on("change", function(){
 				document.getElementById("help4").innerHTML = "";
 				document.getElementById("formed").innerHTML = "";
 				$("#reform").css("display", "none");
+				$("#check").css("display", "none");
 				return true;
 			});
+			var form = $("#formed").text().split(" ");
+			if(form.length-1 == wlen) {
+				$("#check").css("display", "block");
+			}
 			return true
 		});
 	}
