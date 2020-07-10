@@ -24,9 +24,30 @@ $("#lang").on("change", function(){
 	document.getElementById("help3").innerHTML = "";
 	document.getElementById("help4").innerHTML = "";
 	document.getElementById("formed").innerHTML = "";
+	document.getElementById("check").innerHTML = "";
+	document.getElementById("get").innerHTML = "";
+	document.getElementById("hid").innerHTML = "";
+	document.getElementById("see").innerHTML = "";
 	$("#reform").css("display", "none");
-	$("#check").css("display", "none");
+	var chk = document.createElement("BUTTON");
+	chk.innerHTML = "Check the correctness of this sentence";
+	document.getElementById("check").appendChild(chk);
+	$("#check").hide();
 	document.getElementById("ans").innerHTML = "";
+	var get = document.createElement("BUTTON");
+	get.innerHTML = "Get Correct Sentence";
+	document.getElementById("get").appendChild(get);
+	$("#get").hide();
+	var hid = document.createElement("BUTTON");
+	hid.innerHTML = "Hide the correct Sentence";
+	document.getElementById("hid").appendChild(hid);
+	$("#hid").hide();
+	var see = document.createElement("BUTTON");
+	see.innerHTML = "Get Answers";
+	document.getElementById("see").appendChild(see);
+	$("#see").hide();
+	document.getElementById("answers").innerHTML = "";
+	$("#answers").hide();
 	var lang = $("#lang").find(":selected").text();
 	if(lang === "---Select Language---") {
 		alert("Select language");
@@ -36,6 +57,8 @@ $("#lang").on("change", function(){
 		var allans = english[eind];
 		var esample = Math.floor(Math.random()*allans.length);
 		var words = allans[esample].split(" ");
+		var count1 = 0;
+		var count2 = 0;
 		words.pop();
 		var wlen = words.length;
 		for(i=0; i<wlen; i++) {
@@ -53,7 +76,7 @@ $("#lang").on("change", function(){
 			document.getElementById("help3").innerHTML = "Formed Sentence";
 			document.getElementById("help4").innerHTML = "(after selecting words):"
 			var word = $(this).text()+" ";
-			if($(this).text() !== "Re-form the sentence" && $(this).text() !== "Check the correctness of this sentence") {
+			if($(this).text() !== "Re-form the sentence" && $(this).text() !== "Check the correctness of this sentence" && $(this).text() !== "Get Correct Sentence" && $(this).text() !== "Hide the correct Sentence" && $(this).text() !== "Get Answers") {
 				var wordnode = document.createTextNode(word);
 				$(this).hide();
 				document.getElementById("formed").appendChild(wordnode);
@@ -66,34 +89,86 @@ $("#lang").on("change", function(){
 				document.getElementById("formed").innerHTML = "";
 				document.getElementById("ans").innerHTML = "";
 				$("#reform").css("display", "none");
-				$("#check").css("display", "none");
-				$("#get").css("display", "none");
+				$("#check").hide();
+				$("#get").hide();
+				$("#hid").hide();
+				$("#see").hide();
+				document.getElementById("answers").innerHTML = "";
 				return true;
 			});
 			var form = $("#formed").text().split(" ");
 			if(form.length-1 == wlen) {
-				$("#check").css("display", "block");
+				$("#check").show();
 			}
-			$("#check").click(function(){
-				for(i=0; i<allans.length; i++) {
-					if($("#formed").text() === allans[i]) {
-						document.getElementById("ans").innerHTML = "Right answer!!!";
-						$("#ans").css("color", "#008000");
-						return true;
+			$("button").on("click", function(){
+				if($(this).text() === "Check the correctness of this sentence") {
+					document.getElementById("answers").innerHTML = "";
+					if(count1 == 0) {	
+						for(i=0; i<allans.length; i++) {
+							if($("#formed").text() === allans[i]) {
+								document.getElementById("ans").innerHTML = "Right answer!!!";
+								$("#ans").css("color", "#008000");
+								$("#get").hide();
+								count1 += 1;
+								return false;
+							}
+						}	
+						document.getElementById("ans").innerHTML = "Wrong answer!!!";
+						$("#ans").css("color", "#FF0000");
+						$("#get").show();
+						$("button").on("click", function(){
+							if($(this).text() === "Get Correct Sentence") {
+								$("#get").hide();
+								$("#hid").show();
+								$("#answers").show();
+								if(count2 == 0) {	
+									for(i=0; i<allans.length; i++) {
+										if(i == allans.length-1) {
+											var sen = document.createTextNode(allans[i]);
+											document.getElementById("answers").appendChild(sen);
+											count2 += 1;
+											return false;
+										} else {
+											var sen = document.createTextNode(allans[i]);
+											document.getElementById("answers").appendChild(sen);
+											var nl = document.createElement("br");
+											document.getElementById("answers").appendChild(nl);
+										}
+									}
+								}
+							}
+							return false;
+						});
 					}
+					count1 = 0;
+					count2 = 0;	
 				}
-				document.getElementById("ans").innerHTML = "Wrong answer!!!";
-				$("#ans").css("color", "#FF0000");
-				$("#get").css("display", "block");
 				return false;
 			});
-			return true;	
+			return false;
+				
+		});
+		$("button").on("click", function(){
+			if($(this).text() === "Hide the correct Sentence") {
+				$("#hid").toggle();
+				$("#see").toggle();
+				$("#answers").toggle();
+			}
+		});
+		$("button").on("click", function(){
+			if($(this).text() === "Get Answers") {
+				$("#hid").toggle();
+				$("#see").toggle();
+				$("#answers").toggle();
+			}
 		});
 	} else {
 		var hind = Math.floor(Math.random()*7);
 		var allans = hindi[hind];
 		var hsample = Math.floor(Math.random()*allans.length);
 		var words = allans[hsample].split(" ");
+		var count1 = 0;
+		var count2 = 0;
 		words.pop();
 		var wlen = words.length;
 		for(i=0; i<wlen; i++) {
@@ -111,7 +186,7 @@ $("#lang").on("change", function(){
 			document.getElementById("help3").innerHTML = "Formed Sentence";
 			document.getElementById("help4").innerHTML = "(after selecting words):"
 			var word = $(this).text()+" ";
-			if($(this).text() !== "Re-form the sentence" && $(this).text() !== "Check the correctness of this sentence") {
+			if($(this).text() !== "Re-form the sentence" && $(this).text() !== "Check the correctness of this sentence" && $(this).text() !== "Get Correct Sentence" && $(this).text() !== "Hide the correct Sentence" && $(this).text() !== "Get Answers") {
 				var wordnode = document.createTextNode(word);
 				$(this).hide();
 				document.getElementById("formed").appendChild(wordnode);
@@ -124,28 +199,77 @@ $("#lang").on("change", function(){
 				document.getElementById("formed").innerHTML = "";
 				document.getElementById("ans").innerHTML = "";
 				$("#reform").css("display", "none");
-				$("#check").css("display", "none");
-				$("#get").css("display", "none");
+				$("#check").hide();
+				$("#get").hide();
+				$("#hid").hide();
+				$("#see").hide();
+				document.getElementById("answers").innerHTML = "";
 				return true;
 			});
 			var form = $("#formed").text().split(" ");
 			if(form.length-1 == wlen) {
-				$("#check").css("display", "block");
+				$("#check").show();
 			}
-			$("#check").click(function(){
-				for(i=0; i<allans.length; i++) {
-					if($("#formed").text() === allans[i]) {
-						document.getElementById("ans").innerHTML = "Right answer!!!";
-						$("#ans").css("color", "#008000");
-						return true;
+			$("button").on("click", function(){
+				if($(this).text() === "Check the correctness of this sentence") {
+					document.getElementById("answers").innerHTML = "";
+					if(count1 == 0) {	
+						for(i=0; i<allans.length; i++) {
+							if($("#formed").text() === allans[i]) {
+								document.getElementById("ans").innerHTML = "Right answer!!!";
+								$("#ans").css("color", "#008000");
+								$("#get").hide();
+								count1 += 1;
+								return false;
+							}
+						}
+						document.getElementById("ans").innerHTML = "Wrong answer!!!";						
+						$("#ans").css("color", "#FF0000");
+						$("#get").show();
+						$("button").on("click", function(){
+							if($(this).text() === "Get Correct Sentence") {
+								$("#get").hide();
+								$("#hid").show();
+								$("#answers").show();
+								if(count2 == 0) {	
+									for(i=0; i<allans.length; i++) {
+										if(i == allans.length-1) {
+											var sen = document.createTextNode(allans[i]);
+											document.getElementById("answers").appendChild(sen);
+											count2 += 1;
+											return false;
+										} else {
+											var sen = document.createTextNode(allans[i]);
+											document.getElementById("answers").appendChild(sen);
+											var nl = document.createElement("br");
+											document.getElementById("answers").appendChild(nl);
+										}
+									}
+								}
+							}
+							return false;
+						});
 					}
+					count1 = 0;
+					count2 = 0;	
 				}
-				document.getElementById("ans").innerHTML = "Wrong answer!!!";
-				$("#ans").css("color", "#FF0000");
-				$("#get").css("display", "block");
 				return false;
 			});
-			return true
+			return false;
+		});
+		$("button").on("click", function(){
+			if($(this).text() === "Hide the correct Sentence") {
+				$("#hid").toggle();
+				$("#see").toggle();
+				$("#answers").toggle();
+			}
+		});
+		$("button").on("click", function(){
+			if($(this).text() === "Get Answers") {
+				$("#hid").toggle();
+				$("#see").toggle();
+				$("#answers").toggle();
+			}
 		});
 	}
 });
