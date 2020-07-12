@@ -19,48 +19,29 @@ var hindi = [["राम और श्याम बाजार गयें ", 
 			];
 $("#lang").on("change", function(){
 	var count1 = 0;
-	var count2 = 0;
 	document.getElementById("help1").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
 	document.getElementById("help2").innerHTML = "(select the buttons in proper order)";
 	document.getElementById("buttons").innerHTML = "";
 	document.getElementById("help3").innerHTML = "";
 	document.getElementById("help4").innerHTML = "";
 	document.getElementById("formed").innerHTML = "";
-	document.getElementById("check").innerHTML = "";
-	document.getElementById("get").innerHTML = "";
-	document.getElementById("hid").innerHTML = "";
-	document.getElementById("see").innerHTML = "";
 	$("#reform").css("display", "none");
-	var chk = document.createElement("BUTTON");
-	chk.innerHTML = "Check the correctness of this sentence";
-	document.getElementById("check").appendChild(chk);
 	$("#check").css("display", "none");
 	document.getElementById("ans").innerHTML = "";
-	var get = document.createElement("BUTTON");
-	get.innerHTML = "Get Correct Sentence";
-	document.getElementById("get").appendChild(get);
 	$("#get").css("display", "none");
-	var hid = document.createElement("BUTTON");
-	hid.innerHTML = "Hide the correct Sentence";
-	document.getElementById("hid").appendChild(hid);
 	$("#hid").css("display", "none");
-	var see = document.createElement("BUTTON");
-	see.innerHTML = "Get Answers";
-	document.getElementById("see").appendChild(see);
 	$("#see").css("display", "none");
 	$("#answers").text("");
 	$("#answers").css("display", "none");
 	var lang = $("#lang").find(":selected").text();
 	if(lang === "---Select Language---") {
 		alert("Select language");
-		return false;	
+		// return false;	
 	} else if (lang === "English") {
 		var eind = Math.floor(Math.random()*10);
 		var allans = english[eind];
 		var esample = Math.floor(Math.random()*allans.length);
 		var words = allans[esample].split(" ");
-		// var count1 = 0;
-		// var count2 = 0;
 		words.pop();
 		$("#answers").text("");
 		var wlen = words.length;
@@ -98,94 +79,65 @@ $("#lang").on("change", function(){
 				$("#see").css("display", "none");
 				$("#answers").empty();
 				count1 = 0;
-				count2 = 0;
-				return true;
 			});
 			var form = $("#formed").text().split(" ");
 			if(form.length-1 == wlen) {
 				$("#check").css("display", "block");
 			}
-			$("button").on("click", function(){
-				if($(this).text() === "Check the correctness of this sentence") {
-					count1 = 0;
-					count2 = 0;
-					$("#answers").text("");
-					$("#get").css("display", "none");
-					$("#hid").css("display", "none");
-					$("#see").css("display", "none");
-					if(count1 == 0) {	
-						$("#answers").text("");
-						for(i=0; i<allans.length; i++) {
-							if($("#formed").text() === allans[i]) {
-								document.getElementById("ans").innerHTML = "Right answer!!!";
-								$("#ans").css("color", "#008000");
-								$("#get").css("display", "none");
-								count1 += 1;
-								return false;
-							}
-						}	
-						document.getElementById("ans").innerHTML = "Wrong answer!!!";
-						$("#answers").text("");
-						document.getElementById("answers").innerHTML = "";
-						$("#ans").css("color", "#FF0000");
-						$("#get").css("display", "block");
-						$("button").on("click", function(){
-							if($(this).text() === "Get Correct Sentence") {
-								$("#get").css("display", "none");
-								$("#hid").css("display", "block");
-								$("#answers").css("display", "block");
-								if(count2 == 0) {	
-									document.getElementById("answers").innerHTML = "";
-									// $("#answers").text("");
-									for(i=0; i<allans.length; i++) {
-										if(i == allans.length-1) {
-											// var sen = document.createTextNode(allans[i]);
-											document.getElementById("answers").innerHTML += allans[i];
-											count2 += 1;
-											return false;
-										} else {
-											// var sen = document.createTextNode(allans[i]);
-											document.getElementById("answers").innerHTML += allans[i];
-											// var nl = document.createElement("br");
-											document.getElementById("answers").innerHTML += "<br />";
-										}
-									}
-								}
-							}
-							return false;
-						});
-						// count2 = 0;
-					}
-					// count1 = 0;
-					// count2 = 0;
-				}
-				// count1 = 0;
-				return false;
-			});
-			return false;
-				
-		});
-		$("button").on("click", function(){
-			if($(this).text() === "Hide the correct Sentence") {
+			$("#check").on("click", function(){
+				count1 = 0;
+				$("#answers").text("");
+				$("#get").css("display", "none");
 				$("#hid").css("display", "none");
-				$("#see").css("display", "block");
-				$("#answers").css("display", "none");
-			}
-		});
-		$("button").on("click", function(){
-			if($(this).text() === "Get Answers") {
-				$("#hid").css("display", "block");
 				$("#see").css("display", "none");
-				$("#answers").css("display", "block");
-			}
+				if(count1 == 0) {	
+					$("#answers").text("");
+					for(i=0; i<allans.length; i++) {
+						if($("#formed").text() === allans[i]) {
+							document.getElementById("ans").innerHTML = "Right answer!!!";
+							$("#ans").css("color", "#008000");
+							$("#get").css("display", "none");
+							count1 += 1;
+							return true;
+						}
+					}	
+					document.getElementById("ans").innerHTML = "Wrong answer!!!";
+					$("#answers").text("");
+					document.getElementById("answers").innerHTML = "";
+					$("#ans").css("color", "#FF0000");
+					$("#get").css("display", "block");
+					$("#get").on("click", function(){
+						$("#get").css("display", "none");
+						$("#hid").css("display", "block");
+						$("#answers").css("display", "block");	
+						document.getElementById("answers").innerHTML = "";
+						for(i=0; i<allans.length; i++) {
+							if(i == allans.length-1) {
+								document.getElementById("answers").innerHTML += allans[i];
+							} else {
+								document.getElementById("answers").innerHTML += allans[i];
+								document.getElementById("answers").innerHTML += "<br />";
+							}
+						}
+					});
+				}		
+			});
+		});
+		$("#hid").on("click", function(){
+			$("#hid").css("display", "none");
+			$("#see").css("display", "block");
+			$("#answers").css("display", "none");
+		});
+		$("#see").on("click", function(){
+			$("#hid").css("display", "block");
+			$("#see").css("display", "none");
+			$("#answers").css("display", "block");
 		});
 	} else {
 		var hind = Math.floor(Math.random()*7);
 		var allans = hindi[hind];
 		var hsample = Math.floor(Math.random()*allans.length);
 		var words = allans[hsample].split(" ");
-		// var count1 = 0;
-		// var count2 = 0;
 		words.pop();
 		$("#answers").text("");
 		var wlen = words.length;
@@ -223,85 +175,59 @@ $("#lang").on("change", function(){
 				$("#see").css("display", "none");
 				$("#answers").empty();
 				count1 = 0;
-				count2 = 0;
-				return true;
 			});
 			var form = $("#formed").text().split(" ");
 			if(form.length-1 == wlen) {
-				$("#check").show();
+				$("#check").css("display", "block");
 			}
-			$("button").on("click", function(){
-				if($(this).text() === "Check the correctness of this sentence") {
-					count1 = 0;
-					count2 = 0;
+			$("#check").on("click", function(){
+				count1 = 0;
+				$("#answers").text("");
+				$("#get").css("display", "none");
+				$("#hid").css("display", "none");
+				$("#see").css("display", "none");
+				if(count1 == 0) {	
 					$("#answers").text("");
-					$("#get").css("display", "none");
-					$("#hid").css("display", "none");
-					$("#see").css("display", "none");
-					if(count1 == 0) {	
-						$("#answers").text("");
+					for(i=0; i<allans.length; i++) {
+						if($("#formed").text() === allans[i]) {
+							document.getElementById("ans").innerHTML = "Right answer!!!";
+							$("#ans").css("color", "#008000");
+							$("#get").css("display", "none");
+							count1 += 1;
+							return true;
+						}
+					}
+					document.getElementById("ans").innerHTML = "Wrong answer!!!";
+					$("#answers").text("");		
+					document.getElementById("answers").innerHTML = "";		
+					$("#ans").css("color", "#FF0000");
+					$("#get").css("display", "block");
+					$("#get").on("click", function(){
+						$("#get").css("display", "none");
+						$("#hid").css("display", "block");
+						$("#answers").css("display", "block");
+						document.getElementById("answers").innerHTML = "";
 						for(i=0; i<allans.length; i++) {
-							if($("#formed").text() === allans[i]) {
-								document.getElementById("ans").innerHTML = "Right answer!!!";
-								$("#ans").css("color", "#008000");
-								$("#get").css("display", "none");
-								count1 += 1;
-								return false;
+							if(i == allans.length-1) {
+								document.getElementById("answers").innerHTML += allans[i];
+							} else {
+								document.getElementById("answers").innerHTML += allans[i];
+								document.getElementById("answers").innerHTML += "<br />";
 							}
 						}
-						document.getElementById("ans").innerHTML = "Wrong answer!!!";
-						$("#answers").text("");		
-						document.getElementById("answers").innerHTML = "";		
-						$("#ans").css("color", "#FF0000");
-						$("#get").css("display", "block");
-						$("button").on("click", function(){
-							if($(this).text() === "Get Correct Sentence") {
-								$("#get").css("display", "none");
-								$("#hid").css("display", "block");
-								$("#answers").css("display", "block");
-								if(count2 == 0) {
-									// $("#answers").text("");	
-									document.getElementById("answers").innerHTML = "";
-									for(i=0; i<allans.length; i++) {
-										if(i == allans.length-1) {
-											// var sen = document.createTextNode(allans[i]);
-											document.getElementById("answers").innerHTML += allans[i];
-											count2 += 1;
-											return false;
-										} else {
-											// var sen = document.createTextNode(allans[i]);
-											document.getElementById("answers").innerHTML += allans[i];
-											// var nl = document.createElement("br");
-											document.getElementById("answers").innerHTML += "<br />";
-										}
-									}
-								}
-							}
-							return false;
-						});
-						// count2 = 0;
-					}
-					// count1 = 0;
-					// count2 = 0;	
-				}
-				// count1 = 0;
-				return false;
+					});
+				}	
 			});
-			return false;
 		});
-		$("button").on("click", function(){
-			if($(this).text() === "Hide the correct Sentence") {
-				$("#hid").css("display", "none");
-				$("#see").css("display", "block");
-				$("#answers").css("display", "none");
-			}
+		$("#hid").on("click", function(){
+			$("#hid").css("display", "none");
+			$("#see").css("display", "block");
+			$("#answers").css("display", "none");
 		});
-		$("button").on("click", function(){
-			if($(this).text() === "Get Answers") {
-				$("#hid").css("display", "block");
-				$("#see").css("display", "none");
-				$("#answers").css("display", "block");
-			}
+		$("#see").on("click", function(){
+			$("#hid").css("display", "block");
+			$("#see").css("display", "none");
+			$("#answers").css("display", "block");
 		});
 	}
 });
