@@ -1,0 +1,6 @@
+unit - 4 functionalities:
+1. dropdown to select a corpus
+2. on selecting a corpus, a text is displayed with a table requiring the number of tokens and the number of types
+3. if a input is correct, "right answer" is displayed and the input field turns green else "wrong answer" is displayed and input field turns red
+4. if both inputs are correct a "continue" button appears
+5. clicking on "continue" results in a new text asking for the new number of types followed by a input field, and the "right answer" message along with "submit" button disappears
