@@ -33,7 +33,11 @@ $("#corp").on("change", function(){
 	$("#ans2").val("");
 	$("#out1").css("color", "black");
 	document.getElementById("out1").innerHTML = "";
+	$("#out1").css("display", "block");
 	$("#cont").css("display", "none");
+	document.getElementById("newtxt").innerHTML = "";
+	$("#ntype").css("display", "none");
+	$("#subm2").css("display", "none");
 	var corp = $("#corp").find(":selected").text();
 	if(corp === "---Select a corpus---") {
 		alert("Select a corpus");
@@ -66,6 +70,14 @@ $("#corp").on("change", function(){
 				$("#cont").css("display", "none");
 			}
 		});
+		$("#cont").on("click", function(){
+			$("#subm1").css("display", "none");
+			$("#out1").css("display", "none");
+			$("#cont").css("display", "none");
+			document.getElementById("newtxt").innerHTML = "Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.";
+			$("#ntype").css("display", "block");
+			$("#subm2").css("display", "block");
+		});
 	} else if (corp === "Corpus 2") {
 		document.getElementById("corptxt").innerHTML = corpus[1];
 		$("#tab1").css("display", "block");
@@ -95,6 +107,14 @@ $("#corp").on("change", function(){
 				$("#cont").css("display", "none");
 			}
 		});	
+		$("#cont").on("click", function(){
+			$("#subm1").css("display", "none");
+			$("#out1").css("display", "none");
+			$("#cont").css("display", "none");
+			document.getElementById("newtxt").innerHTML = "Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.";
+			$("#ntype").css("display", "block");
+			$("#subm2").css("display", "block");
+		});
 	} else {
 		document.getElementById("corptxt").innerHTML = corpus[2];
 		$("#tab1").css("display", "block");
@@ -124,5 +144,13 @@ $("#corp").on("change", function(){
 				$("#cont").css("display", "none");
 			}
 		});	
+		$("#cont").on("click", function(){
+			$("#subm1").css("display", "none");
+			$("#out1").css("display", "none");
+			$("#cont").css("display", "none");
+			document.getElementById("newtxt").innerHTML = "Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.";
+			$("#ntype").css("display", "block");
+			$("#subm2").css("display", "block");
+		});
 	}
 });
