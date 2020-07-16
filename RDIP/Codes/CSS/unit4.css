@@ -10,3 +10,9 @@ table td {
 	border: 1px solid #b2bbc0;
 	max-width: 700px;
 }
+#out1 {
+	font-size: 20px;
+	font-weight: 300;
+	margin-left: 40px;
+	padding: 10px 0 10px;
+}
