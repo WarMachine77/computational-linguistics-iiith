@@ -47,6 +47,8 @@ $("#corp").on("change", function(){
 	$("#subm2").css("display", "none");
 	$("#ans3").css("background-color", "white");
 	$("#ans3").val("");
+	$("#out2").css("color", "black");
+	document.getElementById("out2").innerHTML = "";
 	var corp = $("#corp").find(":selected").text();
 	if(corp === "---Select a corpus---") {
 		alert("Select a corpus");
@@ -73,9 +75,6 @@ $("#corp").on("change", function(){
 				newtypes.push(word);
 			}
 		}
-		console.log(notokens);
-		console.log(type);
-		console.log(newtypes);
 		$("#subm1").on("click", function(){
 			var inp1 = $("#ans1").val();
 			var inp2 = $("#ans2").val();
@@ -111,8 +110,12 @@ $("#corp").on("change", function(){
 			var inp3 = $("#ans3").val();
 			if(inp3 == newtypes.length) {
 				$("#ans3").css("background-color", "green");
+				$("#out2").css("color", "green");
+				document.getElementById("out2").innerHTML = "Right Answer";
 			} else {
 				$("#ans3").css("background-color", "red");
+				$("#out2").css("color", "red");
+				document.getElementById("out2").innerHTML = "Wrong Answer";
 			}
 		});
 	} else if (corp === "Corpus 2") {
@@ -134,9 +137,6 @@ $("#corp").on("change", function(){
 				newtypes.push(word);
 			}
 		}
-		console.log(notokens);
-		console.log(type);
-		console.log(newtypes);
 		$("#subm1").on("click", function(){
 			var inp1 = $("#ans1").val();
 			var inp2 = $("#ans2").val();
@@ -172,8 +172,12 @@ $("#corp").on("change", function(){
 			var inp3 = $("#ans3").val();
 			if(inp3 == newtypes.length) {
 				$("#ans3").css("background-color", "green");
+				$("#out2").css("color", "green");
+				document.getElementById("out2").innerHTML = "Right Answer";
 			} else {
 				$("#ans3").css("background-color", "red");
+				$("#out2").css("color", "red");
+				document.getElementById("out2").innerHTML = "Wrong Answer";
 			}
 		});
 	} else {
@@ -195,9 +199,6 @@ $("#corp").on("change", function(){
 				newtypes.push(word);
 			}
 		}
-		console.log(notokens);
-		console.log(type);
-		console.log(newtypes);
 		$("#subm1").on("click", function(){
 			var inp1 = $("#ans1").val();
 			var inp2 = $("#ans2").val();
@@ -233,8 +234,12 @@ $("#corp").on("change", function(){
 			var inp3 = $("#ans3").val();
 			if(inp3 == newtypes.length) {
 				$("#ans3").css("background-color", "green");
+				$("#out2").css("color", "green");
+				document.getElementById("out2").innerHTML = "Right Answer";
 			} else {
 				$("#ans3").css("background-color", "red");
+				$("#out2").css("color", "red");
+				document.getElementById("out2").innerHTML = "Wrong Answer";
 			}
 		});
 	}
