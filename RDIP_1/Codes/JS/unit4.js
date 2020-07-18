@@ -54,17 +54,24 @@ $("#corp").on("change", function(){
 		var notokens = tokens(corpus[0]).length;
 		var type = tokens(corpus[0]).filter(types);
 		var notypes = type.length;
-		// var newtypes = [];
-		// for(i=0; i<type.length; i++) {
-		// 	stemmer.setCurrent(type[i]);
-		// 	stemmer.stem();
-		// 	var word = stemmer.getCurrent();
-		// 	if(!newtypes.includes(word)) {
-		// 		newtypes.push(word);
-		// 	}
-		// }
-		// console.log(type);
-		// console.log(newtypes);
+		var newtypes = [];
+		for(i=0; i<type.length; i++) {
+			stemmer.setCurrent(type[i]);
+			stemmer.stem();
+			var word = stemmer.getCurrent();
+			// if(word === "grew") {
+			// 	newtypes.push("grow");
+			// 	continue;
+			// }
+			// if(word === "found" || word === "ate" || word === "grown" || word === "not" || word === "were") {
+			// 	continue;
+			// }
+			if(!newtypes.includes(word)) {
+				newtypes.push(word);
+			}
+		}
+		console.log(type);
+		console.log(newtypes);
 		$("#subm1").on("click", function(){
 			var inp1 = $("#ans1").val();
 			var inp2 = $("#ans2").val();
@@ -103,17 +110,17 @@ $("#corp").on("change", function(){
 		var notokens = tokens(corpus[1]).length;
 		var type = tokens(corpus[1]).filter(types);
 		var notypes = type.length;
-		// var newtypes = [];
-		// for(i=0; i<type.length; i++) {
-		// 	stemmer.setCurrent(type[i]);
-		// 	stemmer.stem();
-		// 	var word = stemmer.getCurrent();
-		// 	if(!newtypes.includes(word)) {
-		// 		newtypes.push(word);
-		// 	}
-		// }
-		// console.log(type);
-		// console.log(newtypes);
+		var newtypes = [];
+		for(i=0; i<type.length; i++) {
+			stemmer.setCurrent(type[i]);
+			stemmer.stem();
+			var word = stemmer.getCurrent();
+			if(!newtypes.includes(word)) {
+				newtypes.push(word);
+			}
+		}
+		console.log(type);
+		console.log(newtypes);
 		$("#subm1").on("click", function(){
 			var inp1 = $("#ans1").val();
 			var inp2 = $("#ans2").val();
@@ -152,17 +159,17 @@ $("#corp").on("change", function(){
 		var notokens = tokens(corpus[2]).length;
 		var type = tokens(corpus[2]).filter(types);
 		var notypes = type.length;
-		// var newtypes = [];
-		// for(i=0; i<type.length; i++) {
-		// 	stemmer.setCurrent(type[i]);
-		// 	stemmer.stem();
-		// 	var word = stemmer.getCurrent();
-		// 	if(!newtypes.includes(word)) {
-		// 		newtypes.push(word);
-		// 	}
-		// }
-		// console.log(type);
-		// console.log(newtypes);
+		var newtypes = [];
+		for(i=0; i<type.length; i++) {
+			stemmer.setCurrent(type[i]);
+			stemmer.stem();
+			var word = stemmer.getCurrent();
+			if(!newtypes.includes(word)) {
+				newtypes.push(word);
+			}
+		}
+		console.log(type);
+		console.log(newtypes);
 		$("#subm1").on("click", function(){
 			var inp1 = $("#ans1").val();
 			var inp2 = $("#ans2").val();
