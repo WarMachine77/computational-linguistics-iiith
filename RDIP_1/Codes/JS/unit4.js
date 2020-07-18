@@ -19,11 +19,12 @@ function tokens(str) {
 		if(temp==="" || temp===" " || temp==="." || temp==="," || temp==="?" || temp==='"'){
 			continue;
 		}
-		if(temp.includes(".") || temp.includes(",") || temp.includes("?") || temp.includes('"')) {
+		if(temp.includes(".") || temp.includes(",") || temp.includes("?") || temp.includes('"') || temp.includes("!")) {
 			temp = temp.replace(".","");
 			temp = temp.replace(",","");
 			temp = temp.replace("?","");
 			temp = temp.replace(/"/g,"");
+			temp = temp.replace("!", "");
 		}
 		token.push(temp);
 	}
@@ -59,17 +60,18 @@ $("#corp").on("change", function(){
 			stemmer.setCurrent(type[i]);
 			stemmer.stem();
 			var word = stemmer.getCurrent();
-			// if(word === "grew") {
-			// 	newtypes.push("grow");
-			// 	continue;
-			// }
-			// if(word === "found" || word === "ate" || word === "grown" || word === "not" || word === "were") {
-			// 	continue;
-			// }
+			if(word === "grew") {
+				newtypes.push("grow");
+				continue;
+			}
+			if(word === "found" || word === "ate" || word === "grown" || word === "not" || word === "were") {
+				continue;
+			}
 			if(!newtypes.includes(word)) {
 				newtypes.push(word);
 			}
 		}
+		console.log(notokens);
 		console.log(type);
 		console.log(newtypes);
 		$("#subm1").on("click", function(){
@@ -115,10 +117,14 @@ $("#corp").on("change", function(){
 			stemmer.setCurrent(type[i]);
 			stemmer.stem();
 			var word = stemmer.getCurrent();
+			if(word === "me" || word === "heard" || word === "had" || word === "himself" || word === "him" || word === "his" || word === "this" || word === "that") {
+				continue;
+			}
 			if(!newtypes.includes(word)) {
 				newtypes.push(word);
 			}
 		}
+		console.log(notokens);
 		console.log(type);
 		console.log(newtypes);
 		$("#subm1").on("click", function(){
@@ -164,10 +170,14 @@ $("#corp").on("change", function(){
 			stemmer.setCurrent(type[i]);
 			stemmer.stem();
 			var word = stemmer.getCurrent();
+			if(word === "his" || word === "himself" || word === "that" || word === "doe" || word === "me" || word === "men" || word === "ran") {
+				continue;
+			}
 			if(!newtypes.includes(word)) {
 				newtypes.push(word);
 			}
 		}
+		console.log(notokens);
 		console.log(type);
 		console.log(newtypes);
 		$("#subm1").on("click", function(){
