@@ -1,0 +1,12 @@
+Functionalities:
+1. dropdown for selecting language
+2. dropdown for selecting sentence from selected language
+3. on selecting a sentence, a table is created 
+4. first column of the table corresponds to the words (lexicon) of the chosen sentence, its second coulumn contains a dropdown for each word (lexicon), which has various parts of speech (POS) for that word, the third and fourth columns of the table are empty for now
+5. the default value of each POS is noun
+6. on clicking submit button, a green tick or a red cross appears in the third column of the respective word depending on whether the the POS chosen is correct or wrong respectively
+7. if all the chosen POS are correct the experiment ends, else a get answers button appears
+8. clicking on get answers results in displaying the correc POS for each lexicon in the fourth lexicon, and the get answers button is replaced by hude answers button
+9. clicking on hide answers button results in hiding the correct POS, and the hide answers button is replaced by get answers button and so on
+10. clicking on select a sentence at any point resets the table and a table with new selected lexicons is created
+11. clicking on language selection dropdown results in resetting the experiment to its initial state
