@@ -45,6 +45,8 @@ $("#corp").on("change", function(){
 	document.getElementById("newtxt").innerHTML = "";
 	$("#ntype").css("display", "none");
 	$("#subm2").css("display", "none");
+	$("#ans3").css("background-color", "white");
+	$("#ans3").val("");
 	var corp = $("#corp").find(":selected").text();
 	if(corp === "---Select a corpus---") {
 		alert("Select a corpus");
@@ -105,6 +107,14 @@ $("#corp").on("change", function(){
 			$("#ntype").css("display", "block");
 			$("#subm2").css("display", "block");
 		});
+		$("#subm2").on("click", function(){
+			var inp3 = $("#ans3").val();
+			if(inp3 == newtypes.length) {
+				$("#ans3").css("background-color", "green");
+			} else {
+				$("#ans3").css("background-color", "red");
+			}
+		});
 	} else if (corp === "Corpus 2") {
 		document.getElementById("corptxt").innerHTML = corpus[1];
 		$("#tab1").css("display", "block");
@@ -158,6 +168,14 @@ $("#corp").on("change", function(){
 			$("#ntype").css("display", "block");
 			$("#subm2").css("display", "block");
 		});
+		$("#subm2").on("click", function(){
+			var inp3 = $("#ans3").val();
+			if(inp3 == newtypes.length) {
+				$("#ans3").css("background-color", "green");
+			} else {
+				$("#ans3").css("background-color", "red");
+			}
+		});
 	} else {
 		document.getElementById("corptxt").innerHTML = corpus[2];
 		$("#tab1").css("display", "block");
@@ -210,6 +228,14 @@ $("#corp").on("change", function(){
 			document.getElementById("newtxt").innerHTML = "Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.";
 			$("#ntype").css("display", "block");
 			$("#subm2").css("display", "block");
+		});
+		$("#subm2").on("click", function(){
+			var inp3 = $("#ans3").val();
+			if(inp3 == newtypes.length) {
+				$("#ans3").css("background-color", "green");
+			} else {
+				$("#ans3").css("background-color", "red");
+			}
 		});
 	}
 });
