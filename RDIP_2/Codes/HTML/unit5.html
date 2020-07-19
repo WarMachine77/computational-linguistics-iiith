@@ -12,14 +12,14 @@
 	<h2>Experiment</h2><br>
 	<div class="container" align="center">
 		<select id="lang" name="language">
-			<option value="none">---Select Language---</option>
+			<option value="none" select="selected">---Select Language---</option>
 			<option id="eng" value="english">English</option>
 			<option id="hin" value="hindi">Hindi</option>
 		</select>
 	</div><br>
-	<div class="continer" align="center">
+	<div class="container" align="center">
 		<select id="esen" name="sentence" style="display: none;">
-			<option value="none">---Select a sentence---</option>
+			<option value="none" select="selected">---Select a sentence---</option>
 			<option id="e1" value="e1">The child liked the chocolate.</option>
 			<option id="e2" value="e2">She was stopped by the bravest knight.</option>
 			<option id="e3" value="e3">Mary baked a cake for his birthday</option>
@@ -27,14 +27,41 @@
 			<option id="e5" value="e5">Mary wore a dress with polka dots.</option>
 		</select>
 		<select id="hsen" align="center" style="display: none;">
-			<option value="none">---Select a sentence---</option>
+			<option value="none" select="selected">---Select a sentence---</option>
 			<option id="h1" value="h1">राम ने सीता के लिए फल तोड़ा।</option>
 			<option id="h2" value="h2">छोटे बच्चे पाठशाला जल्दी आयेंगे।</option>
 			<option id="h3" value="h3">मेहनत का फल मीठा होता है।</option>
 			<option id="h4" value="h4">वाह! वह खूबसूरत है।</option>
 			<option id="h5" value="h5">पेड़ से पत्ते गिर गए।</option>
 		</select>
+	</div><br>
+	<div class="container" align="center">
+		<p id="txt1" style="display: none;">Select the POS tag for corresponding words</p>
 	</div>
+	<div id="tab" class="container" align="center">
+		<table cellspacing="-2" cellpadding="4" border="1" style="text-align: center;height: 25px;width: 25px;">
+			<thead>	
+				<tr>
+					<th>Lexicon</th>
+					<th>POS</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody></tbody>	
+		</table>
+	</div>
+	<select id="epos" name="epos" style="display: none;">
+		<option id="ep1" value="ep1" select="selected">Noun</option>
+		<option id="ep2" value="ep2">Pronoun</option>
+		<option id="ep3" value="ep3">Verb</option>
+		<option id="ep4" value="ep4">Adjective</option>
+		<option id="ep5" value="ep5">Adverb</option>
+		<option id="ep6" value="ep6">Determiner</option>
+		<option id="ep7" value="ep7">Preposition</option>
+		<option id="ep8" value="ep8">Conjunction</option>
+		<option id="ep9" value="ep9">Interjection</option>
+	</select>
 	<script type="text/javascript" src="../JS/unit5.js"></script>
 </body>
 </html>
