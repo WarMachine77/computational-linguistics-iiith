@@ -7,6 +7,7 @@ $("#lang").on("change", function(){
 	$("#txt1").css("display", "none");
 	$("#tab").css("display", "none");
 	$("table > tbody").empty();
+	$("#subm").css("display", "none");
 	var lang = $("#lang").find(":selected").text();
 	if(lang === "---Select Language---") {
 		alert("Select Language");
@@ -32,6 +33,7 @@ $("#lang").on("change", function(){
 					var body = $("table tbody");
 					body.append(markup);
  				}
+ 				$("#subm").css("display", "block");
 			}
 		});
 	} else {
@@ -56,6 +58,7 @@ $("#lang").on("change", function(){
 					var body = $("table tbody");
 					body.append(markup);
  				}
+ 				$("#subm").css("display", "block");
 			}	
 		});
 	}
