@@ -45,32 +45,6 @@ $("#lang").on("change", function(){
 					body.append(markup);
  				}
 				$("#subm").css("display", "block");
-				// $("#subm").on("click", function() {
-				// 	$("table > td:nth-child(3)").empty();
-				// 	var pos = require('pos');
-				// 	var words = new pos.Lexer().lex(sen);
-				// 	var tagger = new pos.Tagger();
-				// 	var taggedWords = tagger.tag(words);
-				// 	for(i=0; i<taggedWords.length; i++) {
-				// 		if(taggedWords[i][1].charAt(0) != "V" && taggedWords[i][1].charAt(0) != "C") {
-				// 			if(taggedWords[i][1].substring(0,2) === $("table tr:nth-child(i+1) td:nth-child(2)").val()) {
-				// 				//add tick
-				// 				$("table tr:nth-child(i+1) td:nth-child(3)").prepend('<img src="../HTML/right.png">');
-				// 			} else {
-				// 				//add cross
-				// 				$("table tr:nth-child(i+1) td:nth-child(3)").prepend('<img src="../HTML/wrong.png">');
-				// 			}
-				// 		} else {
-				// 			if(taggedWords[i][1].substring(0,1) === $("table tr:nth-child(i+1) td:nth-child(2)").val()) {
-				// 				//add tick
-				// 				$("table tr:nth-child(i+1) td:nth-child(3)").prepend('<img src="../HTML/right.png">');
-				// 			} else {
-				// 				//add cross
-				// 				$("table tr:nth-child(i+1) td:nth-child(3)").prepend('<img src="../HTML/wrong.png">');
-				// 			}
-				// 		}
-				// 	}
-				// }); 
 			}
 		});
 	} else {
